@@ -1,16 +1,5 @@
 package com.bitstudy.app.domain;
 
-
-
-/* 할 일 : Lombok 사용하기
- *  주의 : maven 때랑 같은 방식인 것들도 이름이 다르게 되어 있으니 헷갈리지 않게 주의
- *
- *  순서
- *  1) Lombok 을 이용해서 클래스를 엔티티로 변경 @Entity
- *  2) getter/setter, toString 등의 Lombok annotation 사용
- *  3) 동등성, 동일성 비교 할 수 있는 코드 넣어볼 예정
- * */
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,9 +10,16 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
+
+/* 할 일 : Lombok 사용하기
+ *  주의 : maven 때랑 같은 방식인 것들도 이름이 다르게 되어 있으니 헷갈리지 않게 주의
+ *
+ *  순서
+ *  1) Lombok 을 이용해서 클래스를 엔티티로 변경 @Entity
+ *  2) getter/setter, toString 등의 Lombok annotation 사용
+ *  3) 동등성, 동일성 비교 할 수 있는 코드 넣어볼 예정
+ * */
 
 /** @Table - 엔티티와 매핑할 정보를 지정하고
 사용법 : @Index(name ="원하는 명칭", columnList = "사용할 테이블명")
@@ -43,7 +39,7 @@ name 부분을 생략하면 원래 이름 사용.
 @Entity // Lombok 을 이용해서 클래스를 엔티티로 변경 @Entity 가 붙은 클래스는 JPA 가 관리하게 된다.
 @Getter // 모든 필드의 getter 들이 생성
 @ToString // 모든 필드의 toString 생성
-public class Article {
+public class Ex01_1_Article_엔티티로_변경 {
 
     @Id // 전체 필드중에서 PK 표시 해주는 것 @Id 가 없으면 @Entity 어노테이션을 사용 못함
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 해당 필드가 auto_increment 인 경우 @GeneratedValue 를 써서 자동으로 값이 생성되게 해줘야 한다. (기본키 전략)
@@ -74,21 +70,6 @@ public class Article {
     private String hashtag; // 해시태그
 
     /* 양방향 바인딩 */
-    @OrderBy("id") // 양방향 바인딩을 할건데 정렬 기준을 id로 하겠다는 뜻
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    @ToString.Exclude /** 이거 중요. 맨 위에 @ToString이 있는데 마우스 올려보면 '@ToString includes~ lazy load 어쩌고' 나온다.
-     이건 퍼포먼스, 메모리 저하를 일으킬수 있어서 성능적으로 않좋은 영향을 줄 수 있다. 그래서 해당 필드를 가려주세요 하는거*/
-    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
-    /* 이건 더 중요:  @ToString.Exclude 이걸 안해주면 순환잠초 이슈가 생길수 있다.
-        여기서 ToString이 id, title, content, hashtag 다 찍고 Set<ArticleComment> 부분을 찍으려고  ArticleComment.java 파일에 가서 거기 있는 @ToString 이 원소들 다 찍으려고 하면서 원소들 중에 private Article article; 을 보는 순간 다시 Article의 @ToString이 동작하면서 또 모든 원소들을 찍으려고 하고, 그러다가 다시 Set<ArticleComment>를 보고 또 ArticleComment 로 가서 toString 돌리고... 이런식으로 동작하면서 메모리가 터질수 있다. 그래서 Set<ArticleComment> 에 @ToString.Exclude 을 달아준다.
-
-        ArticleComment에 걸지 않고 Article에 걸어주는 이유는 댓글이 글을 참조하는건 정상적인 경우인데, 반대로
-        글이 댓글을 참조하는건 일반적인 경우는 아니기 때문에 Article에 exclude 를 걸어준다.
-    *
-    *  */
-
-
-
 
 
     /**
@@ -116,10 +97,6 @@ public class Article {
     @Column(nullable = false,length = 100)
     private String modifiedBy; // 수정자
 
-//    public void setArticleComments(Set<ArticleComment> articleComments) {
-//        this.articleComments = articleComments;
-//    }
-
     /** 위에 처럼 어노테이션을 붙여주기만 하면 auditing 이 작동한다.
      @CreatedDate : 최초에 insert 할 때 자동으로 한번 넣어준다.
      @CreatedBy : 최초에 insert 할 때 자동으로 한번 넣어준다.
@@ -130,10 +107,10 @@ public class Article {
     /* Entity 를 만들 때는 무조건 기본 생성자가 필요하다.
        public 또는 protected 만 가능한데, 평생 아무데서도 기본 생성자를 안쓰이게 하고 싶어서 protected 로 변경함.
     */
-    protected Article() {}
+    protected Ex01_1_Article_엔티티로_변경() {}
 
     /* 사용자가 입력하는 값만 받기. 나머지는 시스템이 알아서 하게 놔두면 됨. */
-    private Article(String title, String content, String hashtag) {
+    private Ex01_1_Article_엔티티로_변경(String title, String content, String hashtag) {
         this.title = title;
         this.content = content;
         this.hashtag = hashtag;
@@ -150,8 +127,8 @@ public class Article {
      2) return 을 가지고 있기 때문에 상속시 값을 확인할 수 있다. (하위 자료형 객체를 반환할 수 있다.)
      3) 중요 : 객체 생성을 캡슐화 할 수 있다.
      */
-    public static Article of(String title, String content, String hashtag){
-        return new Article(title,content,hashtag);
+    public static Ex01_1_Article_엔티티로_변경 of(String title, String content, String hashtag){
+        return new Ex01_1_Article_엔티티로_변경(title,content,hashtag);
     }
 
     /**
@@ -183,7 +160,7 @@ public class Article {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
+        Ex01_1_Article_엔티티로_변경 article = (Ex01_1_Article_엔티티로_변경) o;
         return id == article.id;
 //        return id.equals(article.id); // 이렇게 나와야 하는데.. TODO 문제 수정하기
 //        return (article.id).equals(id);
