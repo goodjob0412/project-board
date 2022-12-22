@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @ToString
-public class Ex01_2_ArticleComment_엔티티로_변경 {
+public class Ex02_2_ArticleComment_바인딩_설정 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; // 게시글 고유 아이디
@@ -33,6 +33,8 @@ public class Ex01_2_ArticleComment_엔티티로_변경 {
           이건 필수 값이다. 라는 뜻으로 (optional = false) 걸어주기
           댓글은 여러개 : 게시글 1개  == N : 1 == ManyToOne
     */
+
+
     @Setter
     @Column(nullable = false, length = 500)
     private String content; // 본문
@@ -53,5 +55,6 @@ public class Ex01_2_ArticleComment_엔티티로_변경 {
     @LastModifiedBy
     @Column(nullable = false,length = 100)
     private String modifiedBy; // 수정자
+
 
 }
