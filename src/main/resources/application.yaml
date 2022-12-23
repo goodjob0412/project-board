@@ -17,6 +17,12 @@ spring:
     username: bitstudy
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+    # h2 DB 를 사용할때 사용
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    driver-class-name: org.h2.Driver
+
   jpa:
     defer-datasource-initialization: true # test용 데이터베이스의 데이터를 생성할 수 있게 해줌. 나중에 resources 안에 data.sql(무조건 있어야 한다) 파일 만들어서 DB에 초기 데이터를 테스트용으로 넣을 수 있다.
     hibernate.ddl-auto: create # 엔티티를 보고 테이블 데이터를 유추해서 자동으로 DDL 데이터를 만들어준다. domain > Article 엔티티를 보고 CREATE TABLE 구문을 만들어서 테스트 실행될 때마다 자동으로 Article과 ArticleComment 테이블을 생성.(우리가 별도로 짜지 않아도 됨)
@@ -27,6 +33,7 @@ spring:
 
 
   h2.console.enabled: false # H2 콘솔을 활성화 할건지 정하는 부분
+#  h2.console.enabled: true # h2 DB 를 사용할때 사용
   sql.init.mode: always # data.sql 을 언제 작동하게 할건지 결정하는 부분
   # never(절대 사용안함), always(실제 환경에서), embedded(테스트 때 만)
   # (강의 예제니까 실제 화면에서 볼 때도 테스트 때 사용했던 데이터들도 이용할거라서 always로 설정)
