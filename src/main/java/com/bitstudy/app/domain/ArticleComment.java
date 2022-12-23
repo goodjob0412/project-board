@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @ToString
-public class ArticleComment {
+public class ArticleComment extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; // 게시글 고유 아이디
@@ -32,22 +32,22 @@ public class ArticleComment {
     @Column(nullable = false, length = 500)
     private String content; // 본문
 
-    //메타데이터
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime createAt; // 생성일자
-
-    @CreatedBy
-    @Column(nullable = false,length = 100)
-    private String createBy; // 생성자
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt; // 수정일자
-
-    @LastModifiedBy
-    @Column(nullable = false,length = 100)
-    private String modifiedBy; // 수정자
+//    //메타데이터
+//    @CreatedDate
+//    @Column(nullable = false)
+//    private LocalDateTime createAt; // 생성일자
+//
+//    @CreatedBy
+//    @Column(nullable = false,length = 100)
+//    private String createBy; // 생성자
+//
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private LocalDateTime modifiedAt; // 수정일자
+//
+//    @LastModifiedBy
+//    @Column(nullable = false,length = 100)
+//    private String modifiedBy; // 수정자
 
 
 }
