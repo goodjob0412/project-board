@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * - TDD 만드는 방법
  * 1) 우클릭  > Go to > Test (ctrl + shift + T)
  * 2) JUint5 버전인지 확인
+ * 3) 이름 ArticleRepositoryTest 를 JpaRepositoryTest 로 변경
  * */
 public interface Ex04_ArticleRepository_기본테스트용 extends JpaRepository<Article, Long> {
 }
