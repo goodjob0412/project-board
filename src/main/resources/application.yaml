@@ -37,3 +37,14 @@ spring:
   sql.init.mode: always # data.sql 을 언제 작동하게 할건지 결정하는 부분
   # never(절대 사용안함), always(실제 환경에서), embedded(테스트 때 만)
   # (강의 예제니까 실제 화면에서 볼 때도 테스트 때 사용했던 데이터들도 이용할거라서 always로 설정)
+  
+  # data rest 세팅
+  data:
+    rest:
+      base-path: /api # 우리가 엑셀에서 설계한 루트 url 보면 /api 로 되어있다. 그거 쓰면 됨
+      detection-strategy: annotated
+      # detection-strategy : 프로젝트의 레포지토리를 확인할건데, 이 레포지토리를 rest api 로 노출시킬건지 결정하는 부분
+      #  DEFAULT - 모든 public 레포지토리 인터페이스를 표시할건데, 그러나 @(Repository)RestResource 가 포함된것만 노출
+      #  ALL - 모든 레포지토리
+      #  ANNOTATED - 지정한 것만 노출
+      #  VISIBILITY - 레포포지토리를 public 으로 노출한것만
