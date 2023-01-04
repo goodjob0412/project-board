@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
     /articles/serach	            GET	게시판 검색 전용 페이지
     /articles/serach-hashtag	    GET	게시판 해시태그 검색 전용 페이지
  *
- * 
+ *
  *
  * - Thymeleaf - 
  *  뷰 파일은 HTML 로 작업할건데, 타임리프를 설치 함으로서 스프링은 이제 html 파일을 마크업으로 보지 않고, 타입리프 템플릿 파일로 인식한다.
