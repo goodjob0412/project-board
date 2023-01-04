@@ -13,7 +13,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 /** QueryDsl 의 QuerydlsPredicateExecutor 와 QuerysalBinberCustomizer 를 이용해서 검색 기능을 만들어볼거다. */
 
 @RepositoryRestResource
-public interface ArticleCommentRepository extends
+public interface Ex07_5_ArticleCommentRepository extends
         JpaRepository<ArticleComment, Long>,
         QuerydslPredicateExecutor<ArticleComment>
         , QuerydslBinderCustomizer<QArticleComment> {
