@@ -37,8 +37,8 @@ name 부분을 생략하면 원래 이름 사용.
 @Table(indexes = {
         @Index(columnList = "title"),  // 검색속도 빠르게 해주는 작업
         @Index(columnList = "hashtag"),
-        @Index(columnList = "createAt"),
-        @Index(columnList = "createBy")
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy")
 })
 @Entity // Lombok 을 이용해서 클래스를 엔티티로 변경 @Entity 가 붙은 클래스는 JPA 가 관리하게 된다.
 @Getter // 모든 필드의 getter 들이 생성
@@ -100,13 +100,13 @@ public class Ex02_1_Article_바인딩_설정 {
     //메타데이터
     @CreatedDate
     @Column(nullable = false)
-    private LocalDateTime createAt; // 생성일자
+    private LocalDateTime createdAt; // 생성일자
     /* 다른 생성일시 같은 것들은 알아낼 수 있는데, 최초 생성자는 (현재 코드 상태) 인증 받고 오지 않았기 때문에 따로 알아낼 수가 없다.
      * 이 떄 만들어 놓은 jpaConfig 파일을 사용한다. */
 
     @CreatedBy
     @Column(nullable = false,length = 100)
-    private String createBy; // 생성자
+    private String createdBy; // 생성자
 
     @LastModifiedDate
     @Column(nullable = false)

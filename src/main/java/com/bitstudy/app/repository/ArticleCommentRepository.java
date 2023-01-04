@@ -24,17 +24,17 @@ public interface ArticleCommentRepository extends
 
         bindings.excludeUnlistedProperties(true);
 
-        bindings.including(root.content, root.createAt, root.createBy);
+        bindings.including(root.content, root.createdAt, root.createdBy);
 
         bindings.bind(root.content).first(StringExpression::containsIgnoreCase);
-        bindings.bind(root.createAt).first(DateTimeExpression::eq);
-        bindings.bind(root.createBy).first(StringExpression::containsIgnoreCase);
+        bindings.bind(root.createdAt).first(DateTimeExpression::eq);
+        bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
     }
 
     /*  1) 빌드 (ctrl + F9)
         2) Hal 가서 체크하기
-            ex) http://localhost:8080/api/articleComments?createBy=Klaus
-                http://localhost:8080/api/articles?createBy=Klaus
+            ex) http://localhost:8080/api/articleComments?createdBy=Klaus
+                http://localhost:8080/api/articles?createdBy=Klaus
 
     * */
 }
