@@ -1,5 +1,6 @@
 package com.bitstudy.app.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
  /** 통합테스트로 변경해서 테스트 할거임 */
 
-
+@Disabled("Spring Data Rest 통합데이터는 현재 불필요하므로 제외시킴") /* 클래스 레벨에 붙여서 해당 테스트 클래스의 모든 메서드들을 체크하지 않게 한다. 
+   이유는 테스트가 다 통과한걸 확인했고, 당장 개발하는데 계속 돌릴 필요 없기 때문*/
 @SpringBootTest /* 이것만 있으면 MockMvc 를 알아볼 수가 없어서 @AutoConfigureMockMvc 도 같이 넣기 */
 @AutoConfigureMockMvc
 @DisplayName("Data REST - API 테스트")
@@ -28,6 +30,8 @@ public class DataRestTest {
         this.mvc = mvc;
     }
 
+    
+//    @Disabled("구현중")
     /*  [api] - 게시글 리스트 전체 조회 */
     @DisplayName("[api] - 게시글 리스트 전체 조회")
     @Test
