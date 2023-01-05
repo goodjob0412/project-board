@@ -88,7 +88,7 @@ class Ex04_JpaRepositoryTest {
         // 기존꺼랑 현재꺼랑 개수 차이 구하기
         assertThat(articleRepository.count()).isEqualTo(prevCount + 1);
 
-        /* !! 주의: 이상태로 테스트를 돌리면 createAt 이거 못찾는다고 에러남.
+        /* !! 주의: 이상태로 테스트를 돌리면 createdAt 이거 못찾는다고 에러남.
         이유: jpaConfig 파일에 auditing을 쓰겠다고 셋팅을 해놨는데,
         해당 엔티티(Article.java) 에서 auditing을 쓴다고 명시를 안해놓은 상태라서.
         엔티티 가서 클래스레벨로 @EntityListensers(AuditingEntityListener.class) 걸어주자 */

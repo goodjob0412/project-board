@@ -4,7 +4,6 @@ package com.bitstudy.app.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -26,8 +25,8 @@ import java.util.List;
  * */
 
 @Controller
-@RequestMapping("/articles") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
-public class ArticleController {
+@RequestMapping("/articles08") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
+public class Ex08_4_ArticleController {
 
     @GetMapping
     public String articles(ModelMap map) {
@@ -38,11 +37,5 @@ public class ArticleController {
         map.addAttribute("articles", List.of()); // 키: articles, 값: 그냥 list
         return "articles/index";
     }
-
-    @GetMapping("/{articleId}")
-    public String article(@PathVariable Long articleId, ModelMap map) {
-        map.addAttribute("article", null); // 지금 당장은 받아오지 않기 때문에 null 이라고 넣었지만, 테스트할때에는 뭐라도 문자열을 넣줘서 모델에 담기도록 한다.
-        map.addAttribute("articleComments", List.of());
-        return "articles/detail";
-    }
+    
 }

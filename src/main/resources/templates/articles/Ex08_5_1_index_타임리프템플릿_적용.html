@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!--  xmlns:th="http://www.thymeleaf.org"
+    이걸 넣으면 이 문서는 타임리프 템플릿 이다. 라고 알려준다.
+    그런데 회색처리 되어있다. 2버전에서는 필수였는데 3에서부터는 생략해도 된다.
+    공식문서에는 아직 있느니까 넣어봤음.
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 페이지</title>
+</head>
+
+<body>
+<!-- 이 파일이 있어야 Ex08_2 번 테스트의 articlesAll() 테스트를 돌려볼수 있음
+    이 파일의 코드가 바뀔때마다 리컴파일 해주는걸 추천(Ctrl + Shift + F9), 혹시 안되면 ctrl + S 하고 리컴파일 재시도
+  -->
+<!--<header>헤더</header>-->
+<!--헤더를 컴포넌트로 변경하는 방법
+    th:replace="~{파일명 :: 셀렉터}"
+-->
+
+<!--<header th:replace="~{header :: #header}" ></header>-->
+<header th:replace="header :: #header"></header>
+
+<main>
+    <form action="#">
+        <select id="search-type" name="search-type">
+            <option value="">제목</option>
+            <option value="">본문</option>
+            <option value="">id</option>
+            <option value="">닉네임</option>
+            <option value="">해시태그</option>
+        </select>
+
+        <input type="search" placeholder="검색어를 입력하세요" name="search-value" id="search-value">
+
+        <button type="submit">검색</button>
+    </form>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>해시태그</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1번글</td>
+            <td>#java</td>
+            <td>bitstudy</td>
+            <td>2023-01-04</td>
+        </tr>
+        <tr>
+            <td>2번글</td>
+            <td>#spring</td>
+            <td>bitstudy</td>
+            <td>2023-01-03</td>
+        </tr>
+        <tr>
+            <td>3번글</td>
+            <td>#mysql</td>
+            <td>bitstudy</td>
+            <td>2023-01-01</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!-- 페이지네이션 -->
+    <nav>
+        <table>
+            <tbody>
+            <tr>
+                <td>이전</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>다음</td>
+            </tr>
+            </tbody>
+        </table>
+    </nav>
+</main>
+
+<!--
+<footer>
+    푸터
+</footer>
+-->
+<footer th:replace="footer :: #footer"></footer>
+
+</body>
+</html>

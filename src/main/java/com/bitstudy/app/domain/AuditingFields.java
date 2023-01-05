@@ -30,11 +30,11 @@ public class AuditingFields {
     //메타데이터
     @CreatedDate
     @Column(nullable = false)
-    private LocalDateTime createAt; // 생성일자
+    private LocalDateTime createdAt; // 생성일자
 
     @CreatedBy
     @Column(nullable = false,length = 100)
-    private String createBy; // 생성자
+    private String createdBy; // 생성자
 
     @LastModifiedDate
     @Column(nullable = false)

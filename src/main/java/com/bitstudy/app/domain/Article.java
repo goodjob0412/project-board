@@ -43,8 +43,8 @@ import java.util.Set;
 @Table(indexes = {
         @Index(columnList = "title"),  // 검색속도 빠르게 해주는 작업
         @Index(columnList = "hashtag"),
-        @Index(columnList = "createAt"),
-        @Index(columnList = "createBy")
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy")
 })
 @Entity // Lombok 을 이용해서 클래스를 엔티티로 변경 @Entity 가 붙은 클래스는 JPA 가 관리하게 된다.
 @Getter // 모든 필드의 getter 들이 생성
@@ -73,8 +73,8 @@ public class Article extends AuditingFields {
 /***************************************************/
     /* 1) Embedded 방식 */
 //    class Tmp {
-//        @CreatedDate @Column(nullable = false) private LocalDateTime createAt; // 생성일자
-//        @CreatedBy @Column(nullable = false,length = 100) private String createBy; // 생성자
+//        @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // 생성일자
+//        @CreatedBy @Column(nullable = false,length = 100) private String createdBy; // 생성자
 //        @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일자
 //        @LastModifiedBy @Column(nullable = false,length = 100) private String modifiedBy; // 수정자
 //    }
@@ -84,11 +84,11 @@ public class Article extends AuditingFields {
 //    //메타데이터
 //    @CreatedDate
 //    @Column(nullable = false)
-//    private LocalDateTime createAt; // 생성일자
+//    private LocalDateTime createdAt; // 생성일자
 //
 //    @CreatedBy
 //    @Column(nullable = false,length = 100)
-//    private String createBy; // 생성자
+//    private String createdBy; // 생성자
 //
 //    @LastModifiedDate
 //    @Column(nullable = false)
