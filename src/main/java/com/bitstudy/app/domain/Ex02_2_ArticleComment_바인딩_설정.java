@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@Entity
+//@Entity
 @Getter
 @ToString
 public class Ex02_2_ArticleComment_바인딩_설정 {

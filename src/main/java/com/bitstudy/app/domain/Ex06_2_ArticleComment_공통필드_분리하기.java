@@ -10,7 +10,7 @@ import javax.persistence.*;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@Entity
+//@Entity
 @Getter
 @ToString
 public class Ex06_2_ArticleComment_공통필드_분리하기 extends AuditingFields {

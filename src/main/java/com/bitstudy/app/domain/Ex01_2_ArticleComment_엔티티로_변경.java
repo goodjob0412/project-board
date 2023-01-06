@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@Entity
+//@Entity
 @Getter
 @ToString
 public class Ex01_2_ArticleComment_엔티티로_변경 {
