@@ -67,7 +67,7 @@ public class DataRestTest {
      @Test
      void articleCommentOne() throws Exception {
 
-         mvc.perform(get("/api/articles/1"))
+         mvc.perform(get("/api/articleComments/1"))
                  .andExpect(status().isOk())
                  .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
      }
