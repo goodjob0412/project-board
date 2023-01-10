@@ -4,7 +4,6 @@ package com.bitstudy.app.service;
 import com.bitstudy.app.domain.Article;
 import com.bitstudy.app.domain.UserAccount;
 import com.bitstudy.app.domain.type.SearchType;
-import com.bitstudy.app.dto.ArticleCommentDto;
 import com.bitstudy.app.dto.ArticleDto;
 import com.bitstudy.app.dto.ArticleWithCommentsDto;
 import com.bitstudy.app.dto.UserAccountDto;
@@ -18,7 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -35,7 +33,7 @@ import static org.mockito.BDDMockito.*;
  */
 
 @ExtendWith(MockitoExtension.class)
-class ArticleServiceTest {
+class Ex11_2_ArticleServiceTest {
     /* Mock을 주입하는 거에다가 @InjectMocks 을 달아줘야 한다. 그 외의 것들 한테는 @Mock 달아준다. */
     @InjectMocks
     private ArticleService sut; // sut - system under test. 테스트 짤때 사용하는 이름중 하나. 이건 테스트 대상이다 라는 뜻
@@ -95,7 +93,6 @@ class ArticleServiceTest {
         given(articleRepository.findById(articleId)).willReturn(Optional.of(article));
 
         // When
-/* 여기 바꿈 */
         ArticleWithCommentsDto dto = sut.getArticle(articleId);
 
         // Then
