@@ -2,7 +2,12 @@
  여기 파일을 다 HTML 로만 구성
     th:replace 들을 다 삭제
     -->
-
+<!--
+ * - Thymeleaf -
+ *  뷰 파일은 HTML 로 작업할건데, 타임리프를 설치 함으로서 스프링은 이제 html 파일을 마크업으로 보지 않고, 타입리프 템플릿 파일로 인식한다.
+ *  그래서 이 HTML 파일들을 아무데서나 작성할 수 없고, resources > templates 폴더 안에만 작성 가능하다.
+ *  그 외의 css, img, 그리고 js 들은 resources > static 폴더 안에 작성 가능
+ -->
 <!DOCTYPE html>
 <html>
 <head>
