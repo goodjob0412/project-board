@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *  그 외의 css, img, 그리고 js 들은 resources > static 폴더 안에 작성 가능
  * */
 
-@RequestMapping("/articles") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
+@RequestMapping("/articles08") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
 public class Ex08_1_ArticleController_게시판_뷰_비어있는거 {
 
     /* BDD 하러 가기  */

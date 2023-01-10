@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 /** 뷰 엔드포인트 관련 컨트롤러
  *
  * 엑셀 api 에 보면 정의해놓은 view 부분에 url 들이 있다. 그거 보면서 하면됨
@@ -33,18 +31,22 @@ import java.util.List;
 // @RequiredArgsConstructor 는 초기화 되지 않은 final 필드 또는 @NonNull 이 붙은 필드에 대해 생성자 생성 해주는 롬복 애너테이션.
 
 @Controller
-@RequestMapping("/articles") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
-public class ArticleController {
+@RequestMapping("/articles11") // 모든 경로들은 /articles 로 시작하니까 클래스 레벨에 1차로 @RequestMapping("/articles") 걸어놨음
+public class Ex11_5_ArticleController {
 
     private final ArticleService articleService;
 
-    /** 게시판 리스트 보여주기 */
+//    public ArticleController(ArticleService articleService) {
+//        this.articleService = articleService;
+//    }
+    /* @RequiredArgsConstructor 로 만들어진 생성자 (여기서는 articleService) 를 얘가 읽어서 정보의 전달을 할 수 있게 한다. */
+
     @GetMapping
     public String articles(
             @RequestParam(required = false) SearchType searchType,
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
-            /** 해설:
+            /* 해설:
                 @RequestParam: 검색어를 받아야 한다. @RequestParam 를 이용해서 getParameter 를 불러올거고반드시 있지 않아도 된다. 없으면 게시글 전체 조회하면 되니까  SearchType, searchValue 에 (required = false) 달아서 null 들어올 수 있게 걸어놓을수 있다.
                 @PageableDefault: 페이징 기본설정 (한페이지에 10개, 작성일 순, 내림차순-최근)
              */
@@ -61,7 +63,6 @@ public class ArticleController {
         return "articles/index";
     }
 
-    /** 게시글 상세 페이지 */
     @GetMapping("/{articleId}")
     public String article(@PathVariable Long articleId, ModelMap map) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
