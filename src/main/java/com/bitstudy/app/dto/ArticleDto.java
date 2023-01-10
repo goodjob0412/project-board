@@ -51,6 +51,7 @@ public record ArticleDto( /* 우선 엔티티가 가지고 있는 모든 정보�
     }
 
     /* 위에거랑 반대. dto 를 주면 엔티티를 생성하는 메서드 */
+    // DTO 정보로 부터 엔티티를 하나 만들어서 세이브 하는 코드임
     public Article toEntity() {
         return Article.of(
                 userAccountDto.toEntity(),
