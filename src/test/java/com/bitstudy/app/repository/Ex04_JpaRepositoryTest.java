@@ -112,7 +112,7 @@
 //        Article article = articleRepository.findById(1L).orElseThrow();
 //
 //        /* 순서2) 업데이트로 해시태그를 바꾸기
-//            엔티티에 있은 setter 를 이용해서 updateHaghtag 에 있는 문자열로 업데이트 하기
+//            엔티티에 있은 setter 를 이용해서 updatehashtag 에 있는 문자열로 업데이트 하기
 //        *   1. 변수 updateHashtag 에 바꿀 문자열 저장
 //            2. 엔티티(article)에 있는 setter를 이용해서 변수 updateHashtag 에 있는 문자열을 넣고
 //                (해시태그 바꿀꺼니까 setHashtag. 이름 어찌할지모르겠으면 실제 엔티티 파일 가서 setter 만들어보기. 그 이름 그대로 쓰면 됨)

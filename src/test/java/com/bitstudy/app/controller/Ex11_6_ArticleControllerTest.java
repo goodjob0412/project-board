@@ -4,7 +4,6 @@ import com.bitstudy.app.config.SecurityConfig;
 import com.bitstudy.app.dto.ArticleWithCommentsDto;
 import com.bitstudy.app.dto.UserAccountDto;
 import com.bitstudy.app.service.ArticleService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -36,17 +34,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Import(SecurityConfig.class)
 @WebMvcTest(ArticleController.class) 
 @DisplayName("view 컨트롤러 - 게시글")
-class ArticleControllerTest {
+class Ex11_6_ArticleControllerTest {
 
     private final MockMvc mvc;
     @MockBean private ArticleService articleService;
-    /** @MockBean: 테스트시 테스트에 필요한 객체를 bean 으로 등록시켜서 기존 객체 대신 사용 할 수 있게 만들어줌
+    /* @MockBean: 테스트시 테스트에 필요한 객체를 bean 으로 등록시켜서 기존 객체 대신 사용 할 수 있게 만들어줌
 
     ArticleController 에 있는 private final ArticleService articleService; 부분의 articleService를 배제하기 위해서 @MockBean 사용함. 이유는 MockMvc 가 입출력 관련된 것들만 보게 하기 위해서 진퉁 서비스 로직을 끊어주기 위해서 @MockBean 사용
+
     *  */
 
 
-    public ArticleControllerTest(@Autowired MockMvc mvc) {
+
+    public Ex11_6_ArticleControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
