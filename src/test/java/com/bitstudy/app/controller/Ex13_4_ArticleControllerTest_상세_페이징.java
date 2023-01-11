@@ -5,7 +5,6 @@ import com.bitstudy.app.dto.ArticleWithCommentsDto;
 import com.bitstudy.app.dto.UserAccountDto;
 import com.bitstudy.app.service.ArticleService;
 import com.bitstudy.app.service.PaginationService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -32,14 +30,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Import(SecurityConfig.class)
 @WebMvcTest(ArticleController.class) 
 @DisplayName("view 컨트롤러 - 게시글")
-class ArticleControllerTest {
+class Ex13_4_ArticleControllerTest_상세_페이징 {
 
     private final MockMvc mvc;
     @MockBean private ArticleService articleService;
 
     @MockBean private PaginationService paginationService;
 
-    public ArticleControllerTest(@Autowired MockMvc mvc) {
+    public Ex13_4_ArticleControllerTest_상세_페이징(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
