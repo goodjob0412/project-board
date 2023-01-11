@@ -22,7 +22,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/articles")
+@RequestMapping("/articles12_4")
 public class Ex12_4_ArticleController_페이징 {
 
     private final ArticleService articleService;
