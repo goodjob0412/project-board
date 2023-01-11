@@ -22,41 +22,14 @@
                 <attr sel="td.title/a" th:text="${article.title}" th:href="@{'/articles/'+${article.id}}" />
                 <attr sel="td.hashtag/a" th:text="${article.hashtag}" th:href="@{'/articles/'+${article.id}}" />
                 <attr sel="td.user-id/a" th:text="${article.nickname}" th:href="@{'/articles/'+${article.id}}" />
-                <attr sel="td.created-at/time" th:datetime="${article.createdAt}" th:text="${#temporals.format(article.createdAt, 'yyyy-MM-dd')}"
-                />
+                <attr sel="td.created-at/a" th:datetime="${article.createdAt}" th:text="${#temporals.format(article.createdAt, 'yyyy-MM-dd')}"  />
                 <!-- temporals: 유틸리티. 여러가지 포멧을 지원하고. 시간관련 정보를 다루는 함수들을 제공. 그중에 하나가 format -->
 
             </attr>
         </attr>
     </attr>
 
-    <!-- 페이징 -->
-    <attr sel="#pagination">
-        <attr sel="li[0]/a"
-              th:text="이전"
-              th:href="@{/articles(page=${articles.number - 1})}"
-              th:class="'page-link' + (${articles.number<=0}?' disabled':'')"
-        />
-<!--해설
-    th:href="@{/articles(page=${articles.number - 1})}"
-    이전 버튼이기 때문에 text 는 "이전" 이라는 글씨가 들어가야 하지만 링크는 여전히 현재 페이징에 나오고 있는 맨 앞 숫자 보다 1 작아야 한다.
-    이거 돌리면 <a href="/article?page=1" 이런식으로 나옴
 
-    th:class 부분에서 'disabled' 는 부트스트램에서 비활성화를 해주는 클래스
-    articles.number(현재 페이지)가 0 이면 '이전' 버튼이 비활성화 되게 함
--->
-        <attr sel="li[1]" th:class="page-item" th:each="pageNumber : ${paginationBarNumbers}">
-            <attr sel="a" th:text="${pageNumber + 1}" th:href="@{/articles(page=${pageNumber})}" th:class="'page-link' + (${pageNumber} == ${articles.number}?' disabled':'')" />
-            <!--  /articles?page=?? -->
-        </attr>
-
-
-        <attr sel="li[2]/a"
-              th:text="다음"
-              th:href="@{/articles(page=${articles.number + 1})}"
-              th:class="'page-link' + (${articles.number} >= ${articles.totalPages - 1}?' disabled':'')"
-        />
-    </attr>
 </thlogic>
 
 <!-- 디커플드 로직이 제대로 연결이 됐으면 'Ctrl + 파일명' 부분 클릭하면 해당 파일이 열린다.-->

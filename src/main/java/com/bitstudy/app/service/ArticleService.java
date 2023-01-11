@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 
 
-/** 기능 관련된 로직을 다 여기다가 짤거임.  */
+/** 게시판 페이지 페이지네이션 */
 @Slf4j
 @Service
 @RequiredArgsConstructor // 필수 필드에 대한 생성자를 자동으로 만들어주는 롬복 애너테이션
