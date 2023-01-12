@@ -22,7 +22,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/articles")
+@RequestMapping("/articles14_1")
 public class Ex14_1_ArticleController_게시판리스트_타이틀정렬 {
 
     private final ArticleService articleService;
